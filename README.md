@@ -312,7 +312,10 @@ You will however get a warning in the console saying:
 ```
 This is normal, nuxt did not render Fullpage at server render time, but then on mount in the Browser, Fullpage kicks in, changing the DOM. The good part is the content inside the fullpage component (each section) will be present at server render time, which means search engine crawlers will be able to detect it.
 
-### Using <no-ssr> component
+### Using <no-ssr> component 
+  
+!!! <no-ssr> has been deprecated and will be removed in Nuxt 3, please use <client-only> instead
+  
 If you do not want to see that warning and you do not care about search engnes, you can wrap your fullpage component inside a `<no-ssr>` tag like so:
 
 ```
@@ -324,6 +327,19 @@ If you do not want to see that warning and you do not care about search engnes, 
   </no-ssr>
 </template>
 ```
+
+On Nuxt 3, You need to change `<no-ssr>` tag to `<client-only>` like so:
+
+```
+<template>
+  <client-only>
+    <full-page :options="options">
+      <div> This content will only be visibe on browser render, not server render </div>
+    </full-page>
+  </client-only>
+</template>
+```
+
 
 ## Contributing
 Please see [Contributing to fullpage.js](https://github.com/alvarotrigo/fullPage.js/wiki/Contributing-to-fullpage.js)
